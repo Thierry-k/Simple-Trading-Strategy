@@ -24,8 +24,8 @@ Calculate Wealth by cumulatively summing daily profits (cumsum).
 The “cumulative wealth” series is nothing more than a running total of your strategy’s day-by-day profits. Concretely:
 
 1. **Daily Profit (`Profit`)**  
-   - On each trading day *i*, you compute  
-    ![Profit equation](https://latex.codecogs.com/png.latex?
+   - On each trading day *i*, you compute
+![Profit equation](https://latex.codecogs.com/png.latex?
 \displaystyle
 \text{Profit}_i%20=%20
 \begin{cases}
