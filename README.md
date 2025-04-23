@@ -27,3 +27,5 @@ If holding (shares = 1), tomorrow’s close minus today’s close.
 If flat, zero.
 
 Calculate Wealth by cumulatively summing daily profits (cumsum).
+
+![image](https://github.com/user-attachments/assets/f07d54da-efea-4120-ab2a-8afcc08a2561)
