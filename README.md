@@ -25,7 +25,7 @@ The “cumulative wealth” series is nothing more than a running total of your 
 
 1. **Daily Profit (`Profit`)**  
    - On each trading day *i*, you compute
-
+   - $$E = mc^2$$
    - This gives you one number per day: either the gain (or loss) realized the next day if you held a position, or zero.
 
 2. **Cumulative Wealth (`wealth`)**  
