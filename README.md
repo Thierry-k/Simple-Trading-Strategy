@@ -27,13 +27,13 @@ The “cumulative wealth” series is nothing more than a running total of your 
 
 1. **Daily Profit (`Profit`)**  
    - On each trading day *i*, you compute  
-     \[
+     $$\[
        \text{Profit}_i = 
          \begin{cases}
            \text{Close}_{i+1} - \text{Close}_i, &\text{if you’re long (MA10 > MA50)}\\
            0, &\text{otherwise}
          \end{cases}
-     \]  
+     \]$$  
    - This gives you one number per day: either the gain (or loss) realized the next day if you held a position, or zero.
 
 2. **Cumulative Wealth (`wealth`)**  
@@ -43,9 +43,9 @@ The “cumulative wealth” series is nothing more than a running total of your 
        mutate( wealth = cumsum(Profit) )
      ```  
    - Mathematically, at day *t*,  
-     \[
+     $$\[
        \text{wealth}_t \;=\; \sum_{i=1}^{t} \text{Profit}_i.
-     \]  
+     \]$$  
    - In other words, you’re incrementally adding each day’s net gain/loss to the previous total, so that `wealth_t` represents the total P&L the strategy would have realized up to date *t*.
 
 3. **Interpretation Over Time**  
