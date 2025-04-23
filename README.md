@@ -14,8 +14,6 @@ Long 1 share when MA10 > MA50.
 
 Flat (0 shares) otherwise.
 
-Visualized as a highlighted “buy‑and‑hold” region on the price chart.
-
 **Implementation Steps:**
 
 Generate shares vector via list comprehension: 1 if MA10 > MA50, else 0.
