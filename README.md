@@ -35,8 +35,7 @@ The “cumulative wealth” series is nothing more than a running total of your 
        mutate( wealth = cumsum(Profit) )
      ```  
    - Mathematically, at day *t*,
-![image](https://github.com/user-attachments/assets/699e2e94-b67d-48bb-9bbb-2e8a850d5d5f)
-
+   - ![image](https://github.com/user-attachments/assets/699e2e94-b67d-48bb-9bbb-2e8a850d5d5f)
    - In other words, you’re incrementally adding each day’s net gain/loss to the previous total, so that `wealth_t` represents the total P&L the strategy would have realized up to date *t*.
 
 3. **Interpretation Over Time**  
