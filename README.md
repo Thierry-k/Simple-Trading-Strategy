@@ -25,7 +25,7 @@ The “cumulative wealth” series is nothing more than a running total of your 
 
 1. **Daily Profit (`Profit`)**  
    - On each trading day *i*, you compute
-   - ![image](https://github.com/user-attachments/assets/0890067e-bfab-4d7b-b2d5-1156ab38e671)
+![image](https://github.com/user-attachments/assets/0890067e-bfab-4d7b-b2d5-1156ab38e671)
    - This gives you one number per day: either the gain (or loss) realized the next day if you held a position, or zero.
 
 2. **Cumulative Wealth (`wealth`)**  
@@ -35,10 +35,7 @@ The “cumulative wealth” series is nothing more than a running total of your 
        mutate( wealth = cumsum(Profit) )
      ```  
    - Mathematically, at day *t*,
-
-            $$
-            \text{wealth}_t = \sum_{i=1}^t \text{Profit}_i.
-            $$
+![image](https://github.com/user-attachments/assets/699e2e94-b67d-48bb-9bbb-2e8a850d5d5f)
 
    - In other words, you’re incrementally adding each day’s net gain/loss to the previous total, so that `wealth_t` represents the total P&L the strategy would have realized up to date *t*.
 
