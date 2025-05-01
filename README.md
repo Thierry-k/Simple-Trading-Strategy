@@ -1,6 +1,6 @@
 # Simple-Trading-Strategy
 
-**Objective:** Demonstrates a basic stock‑trading algorithm to reinforce Python and pandas skills-does not guarantee profits.
+**Objective:** Demonstrates a basic stock‑trading algorithm to reinforce Python pandas and R skills - does not guarantee profits.
 
 **Signals:**
 
