@@ -22,34 +22,35 @@ A basic moving average crossover algorithm to illustrate trading logic using **P
 ## Implementation Steps
 
 1. **Generate Trading Positions**  
-   Assign 1 or 0 for each day based on signal comparison:
-   ```python
-   shares = [1 if ma10 > ma50 else 0 for ma10, ma50 in zip(MA10, MA50)]
-````
+    Assign 1 or 0 for each day based on signal comparison:
+    
+    ```python
+    shares = [1 if ma10 > ma50 else 0 for ma10, ma50 in zip(MA10, MA50)]
+    ```
 
-2. **Calculate Daily Profit**
-   For each day `i`, profit is:
-   `Profit_i = Position_i × (Close_{i+1} - Close_i)`
+2. **Calculate Daily Profit**  
+    For each day `i`, profit is calculated as:  
+    `Profit[i] = Position[i] × (Close[i+1] - Close[i])`  
+
    If you're flat (no position), profit = 0.
 
-3. **Compute Cumulative Wealth**
-   In R:
+4. **Compute Cumulative Wealth**  
+    In R:
 
-   ```r
-   stk <- stk %>%
-     mutate(wealth = cumsum(Profit))
-   ```
+    ```r
+    stk <- stk %>%
+      mutate(wealth = cumsum(Profit))
+    ```
 
-   Where `wealth_t` is:
-   `wealth_t = sum(Profit_1 to Profit_t)`
+     This creates a running total of profits:  
+    `wealth[t] = Profit[1] + Profit[2] + ... + Profit[t]`
 
-4. **Visualize the Strategy's Performance**
-   Plot the equity curve:
+5. **Visualize the Strategy's Performance**  
+    Plot the equity curve:
 
-   * **x-axis**: Date
-   * **y-axis**: Cumulative Wealth
+    - **x-axis**: Date  
+    - **y-axis**: Cumulative Wealth
 
-   This chart shows how the portfolio would have grown (or declined) based on the strategy:
+    This chart shows how the portfolio would have grown (or declined) based on the strategy:
 
-   ![](R/Simple-Trading-Strategy_files/figure-gfm/plot-wealth-1.png)
-
+    ![](R/Simple-Trading-Strategy_files/figure-gfm/plot-wealth-1.png)
