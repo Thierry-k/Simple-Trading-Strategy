@@ -1,45 +1,55 @@
-# Simple-Trading-Strategy
+# Simple Trading Strategy
 
-**Objective:** Demonstrates a basic stock‑trading algorithm to reinforce Python pandas and R skills - does not guarantee profits.
+A basic moving average crossover algorithm to illustrate trading logic using **Python (pandas)** and **R**.  
+> ⚠️ This is for learning purposes only. It does **not** predict market returns or guarantee profit.
 
-**Signals:**
+---
 
-Fast signal (MA10) – 10‑day moving average, sensitive to recent price changes.
+## Strategy Overview
 
-Slow signal (MA50) – 50‑day moving average, captures long‑term trends.
+**Signals Used:**
 
-**Trading Rule:**
+- **Fast Signal (MA10):** 10-day moving average – reacts quickly to price changes  
+- **Slow Signal (MA50):** 50-day moving average – reflects broader market trends
 
-Long 1 share when MA10 > MA50.
+**Trading Logic:**
 
-Flat (0 shares) otherwise.
+- **Buy (Long 1 share):** When `MA10 > MA50`  
+- **Sell (Flat / 0 shares):** When `MA10 ≤ MA50`
 
-**Implementation Steps:**
+---
 
-Generate shares vector via list comprehension: 1 if MA10 > MA50, else 0.
+## Implementation Steps
 
-**Compute Profit:**
+1. **Generate Trading Positions**  
+   Assign 1 or 0 for each day based on signal comparison:
+   ```python
+   shares = [1 if ma10 > ma50 else 0 for ma10, ma50 in zip(MA10, MA50)]
+````
 
-Calculate Wealth by cumulatively summing daily profits (cumsum).
-The “cumulative wealth” series is nothing more than a running total of your strategy’s day-by-day profits. Concretely:
+2. **Calculate Daily Profit**
+   For each day `i`, profit is:
+   `Profit_i = Position_i × (Close_{i+1} - Close_i)`
+   If you're flat (no position), profit = 0.
 
-1. **Daily Profit (`Profit`)**  
-   - On each trading day *i*, you compute
-![image](https://github.com/user-attachments/assets/0890067e-bfab-4d7b-b2d5-1156ab38e671)
-   - This gives you one number per day: either the gain (or loss) realized the next day if you held a position, or zero.
+3. **Compute Cumulative Wealth**
+   In R:
 
-2. **Cumulative Wealth (`wealth`)**  
-   - You then apply R’s `cumsum()` function to that daily-profit column:  
-     ```r
-     stk <- stk %>%
-       mutate( wealth = cumsum(Profit) )
-     ```  
-   - Mathematically, at day *t*,
-   - ![image](https://github.com/user-attachments/assets/699e2e94-b67d-48bb-9bbb-2e8a850d5d5f)
-   - In other words, you’re incrementally adding each day’s net gain/loss to the previous total, so that `wealth_t` represents the total P&L the strategy would have realized up to date *t*.
+   ```r
+   stk <- stk %>%
+     mutate(wealth = cumsum(Profit))
+   ```
 
-3. **Interpretation Over Time**  
-   - Plotting `wealth` vs. `Date` gives you the equity-curve of the strategy—showing how your pocket (or account) would have grown (or shrunk) over the backtest window.  
-   - The final value (`last(stk$wealth)`) is simply the total money “won” (net of losses) by the end of your dataset.
+   Where `wealth_t` is:
+   `wealth_t = sum(Profit_1 to Profit_t)`
 
-![](R/Simple-Trading-Strategy_files/figure-gfm/plot-wealth-1.png)<!-- -->
+4. **Visualize the Strategy's Performance**
+   Plot the equity curve:
+
+   * **x-axis**: Date
+   * **y-axis**: Cumulative Wealth
+
+   This chart shows how the portfolio would have grown (or declined) based on the strategy:
+
+   ![](R/Simple-Trading-Strategy_files/figure-gfm/plot-wealth-1.png)
+
