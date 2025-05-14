@@ -42,4 +42,4 @@ The “cumulative wealth” series is nothing more than a running total of your 
    - Plotting `wealth` vs. `Date` gives you the equity-curve of the strategy—showing how your pocket (or account) would have grown (or shrunk) over the backtest window.  
    - The final value (`last(stk$wealth)`) is simply the total money “won” (net of losses) by the end of your dataset.
 
-![](Simple-Trading-Strategy_files/figure-gfm/plot-wealth-1.png)<!-- -->
+![](R/Simple-Trading-Strategy_files/figure-gfm/plot-wealth-1.png)<!-- -->
